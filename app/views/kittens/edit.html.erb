@@ -1,0 +1,6 @@
+<h1>Editing <%= @kitten.name %></h1>
+
+<%= render "form" %>
+
+<%= link_to "Back to kitten", kitten_path(@kitten) %>
+<%= link_to "Delete", kitten_path(@kitten), data: { turbo_method: :delete } %>
