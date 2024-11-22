@@ -2,10 +2,20 @@ class KittensController < ApplicationController
   before_action :set_kitten, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @kittens = Kitten.all
+    @kittens = Kitten.all.select(:id, :name)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @kittens }
+    end
   end
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @kitten }
+    end
+  end
 
   def new
     @kitten = Kitten.new
